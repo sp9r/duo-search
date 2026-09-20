@@ -3,23 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
     <title>DUO例文検索</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="left">
+    <main class="container">
+        <section class="left" aria-label="検索">
             <h1 class="title">DUO例文検索</h1>
+
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="キーワードを入力してください...">
-                <button id="clearButton">&times;</button>
+                <label class="visually-hidden" for="searchInput">例文を検索</label>
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="英語・日本語で検索（OR検索にも対応）"
+                    autocomplete="off"
+                    spellcheck="false"
+                    enterkeyhint="search"
+                    aria-describedby="searchHelp"
+                >
+                <button id="clearButton" type="button" aria-label="検索語をクリア" title="クリア">&times;</button>
             </div>
-            <div id="weblioFrame"></div>
-        </div>
-        <div class="right">
+            <p id="searchHelp" class="search-help">空白区切りはAND検索、<code>OR</code> でOR検索</p>
+
+            <div id="weblioFrame" aria-label="Weblio検索"></div>
+        </section>
+
+        <section class="right" aria-label="検索結果">
+            <div class="results-header">
+                <p id="status" role="status" aria-live="polite">データを読み込んでいます…</p>
+            </div>
             <div id="results"></div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
