@@ -205,13 +205,8 @@ function scheduleWeblio(keyword) {
     }
 
     weblioTimer = window.setTimeout(() => {
-        const embedUrl = new URL('https://api.weblio.jp/act/quote/v_1_0/e/');
-        embedUrl.searchParams.set('q', keyword);
-        embedUrl.searchParams.set('type', 'emicro');
-        embedUrl.searchParams.set('opul', window.location.href);
-
         const iframe = document.createElement('iframe');
-        iframe.src = embedUrl.toString();
+        iframe.src = `https://ejje.weblio.jp/content/${encodeURIComponent(keyword)}`;
         iframe.title = `Weblio: ${keyword}`;
         iframe.loading = 'lazy';
         iframe.referrerPolicy = 'strict-origin-when-cross-origin';
